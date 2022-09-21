@@ -47,3 +47,12 @@ caseOf(x, {
   right: (v) => log.green(`Output:  ${v}`),
 });
 log.white("******************************************************");
+
+/* Identity Monad */
+log.blue("Identity Monad \n");
+/*The example below computes addition using the Identity monad. */
+const result = new IdentityImplementation(5).bind((value1: number) =>
+  new IdentityImplementation(4).bind((value2: number) => value1 + value2)
+);
+log.green("\nOutput: ", result);
+log.white("******************************************************");
