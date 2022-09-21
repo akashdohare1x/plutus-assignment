@@ -56,3 +56,7 @@ npm run test:cov
 ## Author
 
 - [@akashdohare1x](https://github.com/akashdohare1x)
+
+## Sample Output
+
+![Console Image](https://github.com/akashdohare1x/plutus-assignment/blob/main/plutus-console.png?raw=true)
