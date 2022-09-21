@@ -1,4 +1,5 @@
 import { log } from "console-log-colors";
+import stringifyBackward from "./stringify-backward/stringify-backward.service";
 import stringify from "./stringify/stringify.service";
 
 /* obj : Object which is passed as an argument to stringify and stringifyBackward methods */
@@ -17,4 +18,12 @@ log.yellow("Object to transaform :");
 log.yellow(JSON.stringify(obj), "\n");
 
 log.greenBright(`Output: ${stringify(obj)}`);
+log.white("******************************************************");
+
+/* Stringify Backward Driver Code */
+log.blueBright("Stringify Backward  \n");
+log.yellow("Object to transaform :");
+log.yellow(JSON.stringify(obj), "\n");
+
+log.greenBright(`Output: ${stringifyBackward(obj)}`);
 log.white("******************************************************");
