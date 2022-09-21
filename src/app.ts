@@ -1,6 +1,8 @@
 import { log } from "console-log-colors";
 import { Either, Left, Right, caseOf } from "./monad/either.monad.service";
 import { IdentityImplementation } from "./monad/identity.monad.service";
+import { decrypt, encrypt, generateKeys } from "./rsa/rsa.service";
+import { Keys } from "./rsa/types/keys.type";
 import stringifyBackward from "./stringify-backward/stringify-backward.service";
 import stringify from "./stringify/stringify.service";
 
@@ -11,7 +13,6 @@ const obj = {
   third: 2,
   fourth: 1,
 };
-
 log.white("******************************************************");
 
 /* Stringify Driver Code */
@@ -55,4 +56,17 @@ const result = new IdentityImplementation(5).bind((value1: number) =>
   new IdentityImplementation(4).bind((value2: number) => value1 + value2)
 );
 log.green("\nOutput: ", result);
+log.white("******************************************************");
+
+/* RSA Algorithm Driver Code */
+log.blueBright("RSA Algorithm \n");
+const message = 13;
+log.yellow("Original Message =", message, "\n");
+const { privateKey, publicKey }: Keys = generateKeys();
+
+const encryptedMessage: number = encrypt(message, publicKey);
+log.green("Encrypted data =", encryptedMessage);
+
+const decryptedMessage: number = decrypt(encryptedMessage, privateKey);
+log.green("Decrypted data =", decryptedMessage);
 log.white("******************************************************");
